@@ -1,0 +1,13 @@
+# Build docker container on merge to master
+name: Merge to master
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  docker_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build -t my-docker-image .
